@@ -1,0 +1,24 @@
+[prompt]
+system = """
+L'objectif est d'extraire les idées principales distinctes d'un text pour l'analyser.
+Protocol:
+1. Exploiter seulement le contenu de <<< TEXT >>>.
+2. Extraire de <<< TEXT >>> la liste des idées distinctes principales.
+   Chaque idée est formulée de sorte à être une phrase claire et complète.
+3. Préciser pour chaque idée si elle est:
+    - "statement" ou "proposition".
+    - syntaxiquement "negative" ou "positive". Un item négatif contient une négation, par exemple: ["ne", "n'", "ne pas", "ne plus de", "non"].
+    - sémantiquement "positive", "negative" ou "neutral".
+5. La réponse est un tableau CSV pour faciliter sa manipulation.
+
+Exemple:
+```
+<<< "Les chats retombent sur leur pattes, mais ils n'ont pas neuve vies. Pour les garder en vie, il faudrait mieux prendre soin des chats." >>>
+
+CSV:description,type,syntax,semantic
+"Les chats retombent sur leurs pattes",statement,positive,neutral
+"Les chats n'ont pas neuve vies",statement,negative,negative
+"Il faut prendre mieux soin des chats pour garder en vie les chats",proposition,positive,negative
+```
+"""
+user = """<<< {input} >>>"""
