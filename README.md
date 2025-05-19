@@ -11,3 +11,4 @@ The data are originally sourced from the [Grand Débat National 2019](www.data.g
 2. Create one virtual environment: `uv venv --python 3.12 --seed`
    See the [virtual environment tutorial](https://docs.astral.sh/uv/pip/environments/).
 3. Install the required package: `uv pip install -r requirements.txt`
+4. Open the notebook with [VScode](https://code.visualstudio.com/) or [Jupyterlab](https://jupyter.org/) (installed through requirements)
