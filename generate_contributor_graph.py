@@ -12,11 +12,12 @@ from scipy.spatial.distance import cosine, euclidean, chebyshev, jensenshannon
 rng = np.random.default_rng(seed=1234)
 # We only select a few columns to avoid OOM issues
 relevant_cols = ["contribution_id", "cluster_id", "cluster_title"]
+N_SAMPLES = 40000
 
 # %%
 ds = load_dataset("perspectiva-solution/embeddings-gdn-question-163")['train']
 df = ds.to_pandas()
-df = df.loc[df.cluster_id != -1, relevant_cols].sample(n=40000, random_state=1234) # Remove idea which were not clustered
+df = df.loc[df.cluster_id != -1, relevant_cols].sample(n=N_SAMPLES, random_state=1234) # Remove idea which were not clustered
 
 # %%
 # TODO Probably refactor as object since we keep passing personas around
@@ -146,6 +147,6 @@ nt.show_buttons(filter_=["physics"])
 
 nt.options["interaction"].__dict__["selectConnectedEdges"] = True
 
-nt.show("communities.html", notebook=False)
+nt.show(f"communities_ncontrib-{N_SAMPLES}.html", notebook=False)
 
 
